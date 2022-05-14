@@ -1,16 +1,8 @@
-import { MongooseModule } from '@nestjs/mongoose';
-import { Test, TestingModule } from '@nestjs/testing';
-import mongoose, { Model } from 'mongoose';
-import {
-  User,
-  UserDocument,
-  UserSchema,
-} from '../../../src/model/user/user.model';
+import { Test  } from '@nestjs/testing';
+
 import { DatabaseModule } from '../database/database.module';
 import { databaseProviders } from '../database/database.providers';
-import { UModel } from './UModel';
 import { UserController } from './user.controller';
-import { UserModule } from './user.module';
 import { usersProviders } from './user.providers';
 import { UserService } from './user.service';
 describe('UserService', () => {

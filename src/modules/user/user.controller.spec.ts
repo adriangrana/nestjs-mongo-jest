@@ -1,8 +1,5 @@
 import { Inject } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
-import { Test, TestingModule } from '@nestjs/testing';
-import { Model } from 'mongoose';
-import { User, UserDocument, UserSchema } from '../../../src/model/user/user.model';
+import { Test } from '@nestjs/testing';
 import { DatabaseModule } from '../database/database.module';
 import { databaseProviders } from '../database/database.providers';
 import { UserController } from './user.controller';

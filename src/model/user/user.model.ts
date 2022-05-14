@@ -3,7 +3,7 @@ import { Document, Model } from 'mongoose';
 
 export type UserDocument = User & Document;
 
-@Schema({})
+@Schema()
 export class User {
   @Prop({ required: true })
   name: string;

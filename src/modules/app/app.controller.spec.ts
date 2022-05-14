@@ -1,5 +1,7 @@
 import { ConfigModule } from '@nestjs/config';
 import { Test, TestingModule } from '@nestjs/testing';
+import { KafkaConsumerService } from '../../kafka/kafka-consumer/kafka-consumer.service';
+import { KafkaProducerService } from '../../kafka/kafka-producer/kafka-producer.service';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -8,9 +10,9 @@ describe('AppController', () => {
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      imports:[ConfigModule],
+      imports:[ConfigModule,],
       controllers: [AppController],
-      providers: [AppService],
+      providers: [AppService,KafkaProducerService,KafkaConsumerService],
     }).compile();
 
     appController = app.get<AppController>(AppController);

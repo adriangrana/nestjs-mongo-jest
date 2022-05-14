@@ -7,9 +7,9 @@ import { HealthModule } from '../../health/health.module';
 import { TerminusModule } from '@nestjs/terminus';
 import configuration from '../../config/configuration';
 import { ConfigModule } from '@nestjs/config';
-import { KafkaModule } from '../../kafka/kafka.module';
-import { KafkaProducerService } from 'src/kafka/kafka-producer/kafka-producer.service';
-import { KafkaConsumerService } from 'src/kafka/kafka-consumer/kafka-consumer.service';
+import { KafkaModule } from '../../lib/kafka/kafka.module';
+import { KafkaProducerService } from 'src/lib/kafka/kafka-producer/kafka-producer.service';
+import { KafkaConsumerService } from 'src/lib/kafka/kafka-consumer/kafka-consumer.service';
 
 @Module({
   imports: [

@@ -7,8 +7,6 @@ export class KafkaConsumerService implements OnApplicationShutdown {
   private readonly kafkaClient = new Kafka({
     clientId: 'arcus-task-subscriber',
     brokers: [process.env.KAFKA_BROKERS_LIST],
-    
-   
    /*  sasl: {
       mechanism: 'plain',
       username: process.env.KAFKA_USERNAME,

@@ -1,7 +1,7 @@
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Test } from '@nestjs/testing';
-import { DatabaseModule } from '../database/database.module';
-import { databaseProviders } from '../database/database.providers';
+import { DatabaseModule } from '../../lib/mongodb/database.module';
+import { databaseProviders } from '../../lib/mongodb/database.providers';
 import { UserController } from './user.controller';
 import { usersProviders } from './user.providers';
 import { UserService } from './user.service';

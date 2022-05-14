@@ -1,7 +1,7 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { KafkaConsumerService } from '../../kafka/kafka-consumer/kafka-consumer.service';
-import { KafkaProducerService } from '../../kafka/kafka-producer/kafka-producer.service';
+import { KafkaConsumerService } from '../../lib/kafka/kafka-consumer/kafka-consumer.service';
+import { KafkaProducerService } from '../../lib/kafka/kafka-producer/kafka-producer.service';
 
 @Injectable()
 export class AppService implements OnModuleInit {

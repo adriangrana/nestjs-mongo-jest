@@ -7,7 +7,7 @@ export class KafkaProducerService implements OnModuleInit, OnApplicationShutdown
     private readonly kafkaClient = new Kafka({
         clientId: 'arcus-task-subscriber',
         brokers: [process.env.KAFKA_BROKERS_LIST],
-      /*   sasl: {
+     /*    sasl: {
             mechanism: 'plain',
             username: process.env.KAFKA_USERNAME,
             password: process.env.KAFKA_PASSWORD
@@ -16,7 +16,6 @@ export class KafkaProducerService implements OnModuleInit, OnApplicationShutdown
    
     private readonly producer = this.kafkaClient.producer();
     async onModuleInit() {
-        process.env.KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR = "1";
 
         try {
             await this.producer.connect();      

@@ -1,4 +1,4 @@
-import { Inject } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Test } from '@nestjs/testing';
 import { DatabaseModule } from '../database/database.module';
 import { databaseProviders } from '../database/database.providers';
@@ -9,12 +9,15 @@ import { UserService } from './user.service';
 describe('UserController', () => {
   let controller: UserController;
   let userService: UserService;
-  
   beforeEach(async () => {
     const module = await Test.createTestingModule({
-      imports: [DatabaseModule],
+      imports: [DatabaseModule, ConfigModule.forRoot()],
       controllers: [UserController],
-      providers: [UserService, ...usersProviders,...databaseProviders],
+      providers: [
+        UserService,
+        ...usersProviders,
+        ...databaseProviders,
+      ],
   }).compile();
  
   userService = module.get<UserService>(UserService);

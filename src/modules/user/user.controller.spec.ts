@@ -1,20 +1,27 @@
+import { Inject } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Test, TestingModule } from '@nestjs/testing';
-import { User, UserSchema } from '../../../src/model/user/user.model';
+import { Model } from 'mongoose';
+import { User, UserDocument, UserSchema } from '../../../src/model/user/user.model';
+import { DatabaseModule } from '../database/database.module';
+import { databaseProviders } from '../database/database.providers';
 import { UserController } from './user.controller';
+import { usersProviders } from './user.providers';
 import { UserService } from './user.service';
 
 describe('UserController', () => {
   let controller: UserController;
-
+  let userService: UserService;
+  
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      imports:[MongooseModule.forFeature([{ name: User.name, schema: UserSchema }])],
+    const module = await Test.createTestingModule({
+      imports: [DatabaseModule],
       controllers: [UserController],
-      providers: [UserService],
-    }).compile();
-
-    controller = module.get<UserController>(UserController);
+      providers: [UserService, ...usersProviders,...databaseProviders],
+  }).compile();
+ 
+  userService = module.get<UserService>(UserService);
+  controller = module.get<UserController>(UserController);
   });
 
   it('should be defined', () => {

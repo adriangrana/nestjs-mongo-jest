@@ -8,12 +8,12 @@ import { TerminusModule } from '@nestjs/terminus';
 import configuration from '../../config/configuration';
 import { ConfigModule } from '@nestjs/config';
 import { KafkaModule } from '../../lib/kafka/kafka.module';
-import { KafkaProducerService } from 'src/lib/kafka/kafka-producer/kafka-producer.service';
-import { KafkaConsumerService } from 'src/lib/kafka/kafka-consumer/kafka-consumer.service';
+import { KafkaProducerService } from '../../lib/kafka/kafka-producer/kafka-producer.service';
+import { KafkaConsumerService } from '../../lib/kafka/kafka-consumer/kafka-consumer.service';
 
 @Module({
   imports: [
-    UserModule,
+    //  UserModule,
     TerminusModule,
     HealthModule,
     KafkaModule,

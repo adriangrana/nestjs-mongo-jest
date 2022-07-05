@@ -7,16 +7,19 @@ export class KafkaConsumerService implements OnApplicationShutdown {
   private readonly kafkaClient = new Kafka({
     clientId: 'arcus-task-subscriber',
     brokers: [process.env.KAFKA_BROKERS_LIST],
-   /*  sasl: {
+    ssl: true,
+    sasl: {
       mechanism: 'plain',
       username: process.env.KAFKA_USERNAME,
       password: process.env.KAFKA_PASSWORD,
-    }, */
+    },
   });
   private readonly consumer: Consumer[] = [];
 
   async consume(topic: ConsumerSubscribeTopic, config: ConsumerRunConfig) {
-    const consumer = this.kafkaClient.consumer({ groupId: 'nestjs-kafka' });
+    const consumer = this.kafkaClient.consumer({
+      groupId: 'cenco.arcus.products.print-production',
+    });
     await consumer.connect();
     await consumer.subscribe(topic);
     await consumer.run(config);
@@ -24,8 +27,8 @@ export class KafkaConsumerService implements OnApplicationShutdown {
   }
 
   onApplicationShutdown(signal?: string) {
-   for (const consumer of this.consumer) {
-     consumer.disconnect();
-   }
+    for (const consumer of this.consumer) {
+      consumer.disconnect();
+    }
   }
 }

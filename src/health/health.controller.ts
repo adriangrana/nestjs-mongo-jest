@@ -1,6 +1,10 @@
-
 import { Controller, Get } from '@nestjs/common';
-import { HealthCheckService, HttpHealthIndicator, HealthCheck, MicroserviceHealthIndicator } from '@nestjs/terminus';
+import {
+  HealthCheckService,
+  HttpHealthIndicator,
+  HealthCheck,
+  MicroserviceHealthIndicator,
+} from '@nestjs/terminus';
 import { Transport } from '@nestjs/microservices';
 @Controller('health')
 export class HealthController {
@@ -13,10 +17,10 @@ export class HealthController {
   @HealthCheck()
   check() {
     return this.health.check([
-        () => this.http.pingCheck('tcp', 
-        {
-            transport: Transport.TCP,
-            options: { host: 'localhost', port: 3000 },
+      () =>
+        this.http.pingCheck('tcp', {
+          transport: Transport.TCP,
+          options: { host: 'localhost', port: 3000 },
         }),
     ]);
   }

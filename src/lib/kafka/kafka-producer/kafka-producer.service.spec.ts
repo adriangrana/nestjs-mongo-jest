@@ -6,7 +6,7 @@ describe('KafkaProducerService', () => {
 
   beforeEach(async () => {
     jest.setMock('kafkajs', { Kafka: { producer: jest.fn() } });
-    service =new KafkaProducerService()
+    service = new KafkaProducerService();
   });
 
   it('should be defined', () => {
